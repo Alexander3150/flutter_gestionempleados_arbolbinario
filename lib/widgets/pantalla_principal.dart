@@ -13,6 +13,9 @@ class _PantallaPrincipalState extends State<PantallaPrincipal> {
   final TextEditingController _idController = TextEditingController();
   final TextEditingController _nombreController = TextEditingController();
   final Arbolbinario arbol = Arbolbinario();
+  String _resultadoRecorrido = ''; // Variable para almacenar el resultado
+  String _nombreRecorrido =
+      ''; // Variable para almacenar el nombre del recorrido
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +39,19 @@ class _PantallaPrincipalState extends State<PantallaPrincipal> {
               arbol: arbol,
               idController: _idController,
               nombreController: _nombreController,
+              onRecorridoCompletado: (String nombre, String resultado) {
+                setState(() {
+                  _nombreRecorrido =
+                      nombre; // Actualiza el nombre del recorrido
+                  _resultadoRecorrido =
+                      resultado; // Actualiza el resultado del recorrido
+                });
+              },
+            ),
+            const SizedBox(height: 20),
+            Text(
+              'Recorrido: $_nombreRecorrido\n$_resultadoRecorrido', // Muestra nombre y resultado del recorrido
+              style: const TextStyle(fontSize: 16),
             ),
           ],
         ),

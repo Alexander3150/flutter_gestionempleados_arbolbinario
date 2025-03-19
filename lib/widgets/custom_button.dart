@@ -5,12 +5,15 @@ class BotonesAcciones extends StatelessWidget {
   final Arbolbinario arbol;
   final TextEditingController idController;
   final TextEditingController nombreController;
+  final Function(String, String)
+  onRecorridoCompletado; // Callback para pasar nombre y resultado
 
   const BotonesAcciones({
     super.key,
     required this.arbol,
     required this.idController,
     required this.nombreController,
+    required this.onRecorridoCompletado,
   });
 
   @override
@@ -42,15 +45,36 @@ class BotonesAcciones extends StatelessWidget {
           child: const Text('Guardar'),
         ),
         ElevatedButton(
-          onPressed: () => arbol.preorden(),
+          onPressed: () {
+            String resultado =
+                arbol.preorden(); // Obtener resultado del recorrido
+            onRecorridoCompletado(
+              'Preorden',
+              resultado,
+            ); // Actualizar estado con nombre y resultado
+          },
           child: const Text('Mostrar Preorden'),
         ),
         ElevatedButton(
-          onPressed: () => arbol.inorden(),
+          onPressed: () {
+            String resultado =
+                arbol.inorden(); // Obtener resultado del recorrido
+            onRecorridoCompletado(
+              'Inorden',
+              resultado,
+            ); // Actualizar estado con nombre y resultado
+          },
           child: const Text('Mostrar Inorden'),
         ),
         ElevatedButton(
-          onPressed: () => arbol.postorden(),
+          onPressed: () {
+            String resultado =
+                arbol.postorden(); // Obtener resultado del recorrido
+            onRecorridoCompletado(
+              'Postorden',
+              resultado,
+            ); // Actualizar estado con nombre y resultado
+          },
           child: const Text('Mostrar Postorden'),
         ),
       ],
