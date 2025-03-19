@@ -20,21 +20,65 @@ class _PantallaPrincipalState extends State<PantallaPrincipal> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Registro de Empleados')),
+      backgroundColor: const Color(0xFF1F2124), // Fondo de color #1F2124
+      appBar: AppBar(
+        title: const Text(
+          'Registro de Empleados',
+          style: TextStyle(
+            color: Colors.amber, // Letras doradas
+            fontFamily: 'CorsainOne', // Fuente Corsain One
+            fontWeight: FontWeight.bold, // Negrita
+          ),
+        ),
+        backgroundColor: const Color(0xFF1F2124), // Fondo del AppBar
+      ), // Falta la coma aquí
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
+            const Center(
+              child: Text(
+                'Bienvenido',
+                style: TextStyle(
+                  color: Colors.amber, // Letras doradas
+                  fontFamily: 'CorsainOne', // Fuente Corsain One
+                  fontWeight: FontWeight.bold, // Negrita
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
             TextField(
               controller: _idController,
-              decoration: const InputDecoration(labelText: 'ID'),
+              decoration: const InputDecoration(
+                labelText: 'ID',
+                labelStyle: TextStyle(color: Colors.amber), // Letras doradas
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.amber), // Borde dorado
+                ),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.amber), // Borde dorado
+                ),
+              ),
+              style: const TextStyle(color: Colors.amber), // Letras doradas
               keyboardType: TextInputType.number,
             ),
             TextField(
               controller: _nombreController,
-              decoration: const InputDecoration(labelText: 'Nombre'),
+              decoration: const InputDecoration(
+                labelText: 'Nombre',
+                labelStyle: TextStyle(color: Colors.amber), // Letras doradas
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.amber), // Borde dorado
+                ),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.amber), // Borde dorado
+                ),
+              ),
+              style: const TextStyle(color: Colors.amber), // Letras doradas
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 25),
+
             BotonesAcciones(
               arbol: arbol,
               idController: _idController,
@@ -49,9 +93,16 @@ class _PantallaPrincipalState extends State<PantallaPrincipal> {
               },
             ),
             const SizedBox(height: 20),
-            Text(
-              'Recorrido: $_nombreRecorrido\n$_resultadoRecorrido', // Muestra nombre y resultado del recorrido
-              style: const TextStyle(fontSize: 16),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Text(
+                  'Recorrido: $_nombreRecorrido\n$_resultadoRecorrido', // Muestra nombre y resultado del recorrido
+                  style: const TextStyle(
+                    color: Colors.amber, // Letras doradas
+                    fontSize: 16,
+                  ),
+                ),
+              ),
             ),
           ],
         ),
